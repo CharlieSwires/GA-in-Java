@@ -1,7 +1,7 @@
 package chapter5;
 
+import java.awt.datatransfer.SystemFlavorMap;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Timetable is the main evaluation class for the class scheduler GA.
@@ -35,6 +35,7 @@ public class Timetable {
 
 	private int numClasses = 0;
     private HashMap<Integer, Availability> professorsAvailability;
+	private HashMap<Integer, Availability> roomAvailability;
 
 	/**
 	 * Initialize new Timetable
@@ -46,6 +47,7 @@ public class Timetable {
 		this.groups = new HashMap<Integer, Group>();
 		this.timeslots = new HashMap<Integer, Timeslot>();
 		this.professorsAvailability = new HashMap<Integer, Availability>();
+		this.roomAvailability = new HashMap<Integer, Availability>();
 	}
 
 	/**
@@ -66,13 +68,18 @@ public class Timetable {
 		this.modules = cloneable.getModules();
 		this.groups = cloneable.getGroups();
 		this.timeslots = cloneable.getTimeslots();
-	    this.professorsAvailability = cloneable.getProfessorsAvailability();
+		this.professorsAvailability = cloneable.getProfessorsAvailability();
+		this.roomAvailability = cloneable.getRoomAvailability();
 
 	}
 
+
 	private HashMap<Integer, Availability> getProfessorsAvailability() {
-        return this.professorsAvailability;
-    }
+		return this.professorsAvailability;
+	}
+	private HashMap<Integer, Availability> getRoomAvailability() {
+		return this.roomAvailability;
+	}
 
     private HashMap<Integer, Group> getGroups() {
 		return this.groups;
@@ -92,13 +99,14 @@ public class Timetable {
 
 	/**
 	 * Add new room
-	 * 
-	 * @param roomId
+	 *  @param roomId
 	 * @param roomName
 	 * @param capacity
+	 * @param av4
 	 */
-	public void addRoom(int roomId, String roomName, int capacity) {
+	public void addRoom(int roomId, String roomName, int capacity, Availability av) {
 		this.rooms.put(roomId, new Room(roomId, roomName, capacity));
+		this.roomAvailability.put(roomId, av);
 	}
 
 	/**
@@ -368,9 +376,11 @@ public class Timetable {
 			// Check if professor is available
 			for (Class classB : this.classes) {
 				if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId()
-						&& classA.getClassId() != classB.getClassId() 
+						&& classA.getClassId() != classB.getClassId()
 						&& !getProfessorsAvailability(classA.getProfessorId()).containsKey(classA.getTimeslotId())
-						&& !getProfessorsAvailability(classB.getProfessorId()).containsKey(classB.getTimeslotId())) {
+						&& !getProfessorsAvailability(classB.getProfessorId()).containsKey(classB.getTimeslotId())
+						&& !getRoomAvailability(classA.getRoomId()).containsKey(classA.getTimeslotId())
+						&& !getRoomAvailability(classB.getRoomId()).containsKey(classB.getTimeslotId())) {
 					clashes++;
 					break;
 				}
@@ -384,5 +394,7 @@ public class Timetable {
         return professorsAvailability.get(id);
     }
 
+	private HashMap<Integer, Availability> getRoomAvailability(int id) {
+		return roomAvailability.get(id);	}
 
 }

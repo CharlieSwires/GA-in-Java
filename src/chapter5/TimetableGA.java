@@ -103,11 +103,6 @@ public class TimetableGA {
 		// Create timetable
 		Timetable timetable = new Timetable();
 
-		// Set up rooms
-		timetable.addRoom(1, "A1", 15);
-		timetable.addRoom(2, "B1", 30);
-		timetable.addRoom(4, "D1", 20);
-		timetable.addRoom(5, "F1", 25);
 
 		// Set up timeslots
 		timetable.addTimeslot(1, "Mon 9:00 - 11:00");
@@ -158,9 +153,14 @@ public class TimetableGA {
         Availability av18 = new Availability(timetable.getTimeslots());
         Availability av19 = new Availability(timetable.getTimeslots());
         Availability av20 = new Availability(timetable.getTimeslots());
-        
+        // Set up rooms
+        timetable.addRoom(1, "A1", 15, av1);
+        timetable.addRoom(2, "B1", 30, av2);
+        timetable.addRoom(4, "D1", 20, av3);
+        timetable.addRoom(5, "F1", 25, av4);
 
-		// Set up professors
+
+        // Set up professors
 		timetable.addProfessor(1, "Dr P Smith",av1);
 		timetable.addProfessor(2, "Mrs E Mitchell",av2);
 		timetable.addProfessor(3, "Dr R Williams",av3);
