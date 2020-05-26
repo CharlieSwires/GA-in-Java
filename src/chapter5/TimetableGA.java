@@ -129,14 +129,14 @@ public class TimetableGA {
 		// Set availabilities first profs
         Availability av1 = new Availability(timetable.getTimeslots());
         av1.getSlots().remove(7);
-//        av1.getSlots().remove(8);
-//        av1.getSlots().remove(9);
-//        av1.getSlots().remove(10);
-//        av1.getSlots().remove(11);
-//        av1.getSlots().remove(12);
-//        av1.getSlots().remove(13);
-//        av1.getSlots().remove(14);
-//        av1.getSlots().remove(15);
+        av1.getSlots().remove(8);
+        av1.getSlots().remove(9);
+        av1.getSlots().remove(10);
+        av1.getSlots().remove(11);
+        av1.getSlots().remove(12);
+        av1.getSlots().remove(13);
+        av1.getSlots().remove(14);
+        av1.getSlots().remove(15);
         Availability av2 = new Availability(timetable.getTimeslots());
         Availability av3 = new Availability(timetable.getTimeslots());
         Availability av4 = new Availability(timetable.getTimeslots());

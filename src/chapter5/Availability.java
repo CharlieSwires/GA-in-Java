@@ -9,7 +9,9 @@ public class Availability extends HashMap {
 
     public Availability(Map<Integer, Timeslot> slots) {
         super();
-        this.slots = slots;
+        for (Integer k : slots.keySet()) {
+            this.slots.put(k,slots.get(k));
+        }
     }
     public Map<Integer, Timeslot> getSlots() {
         return slots;
