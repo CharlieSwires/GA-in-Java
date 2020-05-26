@@ -136,23 +136,6 @@ public class TimetableGA {
         Availability av3 = new Availability(timetable.getTimeslots());
         Availability av4 = new Availability(timetable.getTimeslots());
         
-        // Set availabilities students
-        Availability av5 = new Availability(timetable.getTimeslots());
-        Availability av6 = new Availability(timetable.getTimeslots());
-        Availability av7 = new Availability(timetable.getTimeslots());
-        Availability av8 = new Availability(timetable.getTimeslots());
-        Availability av9 = new Availability(timetable.getTimeslots());
-        Availability av10 = new Availability(timetable.getTimeslots());
-        Availability av11 = new Availability(timetable.getTimeslots());
-        Availability av12 = new Availability(timetable.getTimeslots());
-        Availability av13 = new Availability(timetable.getTimeslots());
-        Availability av14 = new Availability(timetable.getTimeslots());
-        Availability av15 = new Availability(timetable.getTimeslots());
-        Availability av16 = new Availability(timetable.getTimeslots());
-        Availability av17 = new Availability(timetable.getTimeslots());
-        Availability av18 = new Availability(timetable.getTimeslots());
-        Availability av19 = new Availability(timetable.getTimeslots());
-        Availability av20 = new Availability(timetable.getTimeslots());
         // Set up rooms
         timetable.addRoom(1, "A1", 15, av1);
         timetable.addRoom(2, "B1", 30, av2);
